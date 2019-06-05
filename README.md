@@ -1,5 +1,8 @@
 # MATLAB code for LAHCMA
 
+Code to perform feature selection. Here feature selection is done using a modified version of Memetic Algorithm called LAHCMA.
+
+Code for Simulated Annealing is also provided.
 ### This is code for paper entitled - "Feature selection for facial emotion recognition using late hill-climbing based memetic algorithm"
 ## Data Preparation
 Four mat files need to be created:  
@@ -8,7 +11,6 @@ Four mat files need to be created:
 * test.mat - contains the data to be used for validation
 * testLabel.mat - contains one hot encoded class labels for validation data
 
-all features to be put in _Data/data*/_ folder, where * is any number
 ## Parameters
 
 The following 3 classifiers can be chosen using variable _ch_ in _classify.m_
