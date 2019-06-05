@@ -3,7 +3,7 @@
 function []=malhc(x,t,x2,t2,str)
 tic
 rng('shuffle');
-global memory;
+global memory; % stores the results
 %%{
 % str = 'A:/Study/Project/RSProject/EmotionRecognition/Code_Data_Results/DataEmotion/RAFD/Set_size_324/';% DataEmotion/RAFD/Set_size_900/train.mat
 % x=importdata(strcat(str,'train.mat'));
@@ -104,11 +104,13 @@ while ((sum(population(1,:)==1)>fnum || rank(1)<acc) && (count<=iteration))    %
         clear a b j rankcs;
     end
     %crossover ends
+    % local search - LAHCRR
     %%{
     fprintf('Local search done for %d th time\n',count);
     [population,rank,netArray]=localsearch(x,t,x2,t2,population,rank,netArray,relevancy,redundancy,probM);
     %}
     count=count+1;
+    % sorts and ranks the chromosomes
     [population,rank,netArray]=chromosomeRank(x,t,x2,t2,population,rank,netArray,1,1);
     
     
@@ -119,6 +121,7 @@ while ((sum(population(1,:)==1)>fnum || rank(1)<acc) && (count<=iteration))    %
 end
 fprintf('The least number of features is : %d\n',sum(population(1,:)==1));
 fprintf('The best accuracy is : %d\n',rank(1));
+% stores results in global variable for main_loop to access
 memory.rank = rank;
 memory.population = population;
 save('result.mat','population','rank','netArray');

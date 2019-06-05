@@ -1,3 +1,4 @@
+% generates the redundancy and relevance matrix for LAHCRR
 function [] = maxRelMinRed(data,class,str)
 temp = zeros(size(class,1),1);
 for i=1:size(data,1)
